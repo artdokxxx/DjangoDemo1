@@ -17,4 +17,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     url(r'^$', 'AboutMeApp.views.home'),
+    url(r'^about/$', 'AboutMeApp.views.about'),
+    url(r'^work/$', 'AboutMeApp.views.work'),
+    url(r'^study/$', 'AboutMeApp.views.study'),
 ]
