@@ -2,14 +2,47 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div class="row">
-        {% for post in posts %}
-            <div class="col-sm-6">
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.text|truncatewords:"80"|escape }}</p>
-            </div>
-            {% if forloop.counter|divisibleby:2 %}<div class="clearfix"></div>{% endif %}
-        {% endfor %}
+    <div class="">
+        <div class="col-sm-4">
+            <img src="{{ STATIC }}images/photo.jpg" alt="" width="100%">
+        </div>
+        <div class="col-sm-6">
+            <table class="table">
+                <tr>
+                    <td>ФИО</td>
+                    <td>{{ fio|title }}</td>
+                </tr>
+                <tr>
+                    <td>Возраст</td>
+                    <td>{{ age | floatformat:"0"}}</td>
+                </tr>
+                <tr>
+                    <td>Дата рождения</td>
+                    <td>{{ date_birthday| date:"d/m/Y" }} </td>
+                </tr>
+                <tr>
+                    <td>Место рождения</td>
+                    <td> {{ place_birthday }}</td>
+                </tr>
+                <tr>
+                    <td>Хобби</td>
+                    <td>
+                        {% if not hobbies %}
+                            Нет увлечений
+                        {% endif %}
+                        {% for hobby in hobbies %}
+                            <span class="label label-primary">
+                                {% if hobby.icon %}
+                                    <b class="fa fa-{{ hobby.icon }}" aria-hidden="true"></b> &nbsp;
+                                {% endif %}
+                                {{ hobby.name }}
+                            </span>
+                            &nbsp;
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
     <div class="clearfix"></div>
 {% endblock %}
