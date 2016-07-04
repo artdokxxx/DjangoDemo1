@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'AboutMeApp'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -82,6 +83,9 @@ DATABASES = {
     }
 }
 
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, "fixtures")
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

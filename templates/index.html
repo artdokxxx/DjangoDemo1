@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load extra_filters %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
@@ -10,19 +11,19 @@
             <table class="table">
                 <tr>
                     <td>ФИО</td>
-                    <td>{{ fio|title }}</td>
+                    <td>{{ info.last_name|title }} {{ info.first_name|title }} {{ info.second_name|title }}</td>
                 </tr>
                 <tr>
                     <td>Возраст</td>
-                    <td>{{ age | floatformat:"0"}}</td>
+                    <td>{{ info.date_birthday | get_age | floatformat:"0"}}</td>
                 </tr>
                 <tr>
                     <td>Дата рождения</td>
-                    <td>{{ date_birthday| date:"d/m/Y" }} </td>
+                    <td>{{ info.date_birthday| date:"d/m/Y" }} </td>
                 </tr>
                 <tr>
                     <td>Место рождения</td>
-                    <td> {{ place_birthday }}</td>
+                    <td> {{ info.place_birthday }}</td>
                 </tr>
                 <tr>
                     <td>Хобби</td>
@@ -32,8 +33,8 @@
                         {% endif %}
                         {% for hobby in hobbies %}
                             <span class="label label-primary">
-                                {% if hobby.icon %}
-                                    <b class="fa fa-{{ hobby.icon }}" aria-hidden="true"></b> &nbsp;
+                                {% if hobby.ico_fa %}
+                                    <b class="fa fa-{{ hobby.ico_fa }}" aria-hidden="true"></b> &nbsp;
                                 {% endif %}
                                 {{ hobby.name }}
                             </span>
