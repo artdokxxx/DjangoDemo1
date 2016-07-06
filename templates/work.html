@@ -2,6 +2,21 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Фильтры</h3>
+          </div>
+          <div class="panel-body">
+            <div class="col-md-6">
+                <input type="checkbox" class="" name="only_3_js" value="js"> Показать только 3 [JS]
+            </div>
+            <div class="col-md-6">
+                <a class="button" name="only_3_code" href="/work/limit-3/">Показать только 3</a>
+            </div>
+          </div>
+        </div>
+    </div>
     <div class="">
         <div class="col-sm-12">
             {% if title|length > 1 %}<h2 class="text-center"> {{ title }}</h2>{% endif %}
@@ -11,15 +26,15 @@
             {% for place in works %}
                 <div class="media">
                     <div class="media-left media-middle text-left">
-                        {% if place.logo %}
-                            <img src="{{ STATIC }}images/{{ place.logo }}" alt="{{ place.name }}" width="100px">
+                        {% if place.organization.logo %}
+                            <img src="{{ STATIC }}images/{{ place.organization.logo }}" alt="{{ place.organization.name }}" width="100px">
                         {% endif %}
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading">{{ place.name }}</h4>
+                        <h4 class="media-heading"><a href="/work/{{ place.organization.id }}">{{ place.organization.name }}</a></h4>
                         <br>
                     <p>
-                        {% if place.site %}<b>Сайт</b> - <a  href="{{ place.site }}" title="{{ place.name }}">{{ place.site }}</a><br>{% endif %}
+                        {% if place.organization.site %}<b>Сайт</b> - <a  href="{{ place.organization.site }}" title="{{ place.organization.name }}">{{ place.organization.site }}</a><br>{% endif %}
                         <b>Период работы</b> - {{ place.date_start | date:"d/m/Y" }} - {% if place.date_finish %}{{ place.date_finish | date:"d/m/Y" }} <br>{% else %} н.в.<br>{% endif %}
                         {% if place.desc %}<br>{{ place.desc }}<br>{% endif %}
                     </p>

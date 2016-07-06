@@ -19,5 +19,8 @@ from AboutMeApp import views as views_aboutme
 urlpatterns = [
     url(r'^$', views_aboutme.home),
     url(r'^work/$', views_aboutme.work),
+    url(r'^work/limit-(\d+)/$', views_aboutme.work),
+    url(r'^work/(\d+)/$', views_aboutme.work_detail),
     url(r'^study/$', views_aboutme.study),
+    url(r'^study/(\d+)/$', views_aboutme.study_detail),
 ]

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="">
+        <div class="col-sm-12">
+            {% if title|length > 1 %}<h2 class="text-center"> {{ title }}</h2>{% endif %}
+                <div class="media">
+                    <div class="media-left media-middle text-left">
+                        {% if organization.logo %}
+                            <img src="{{ STATIC }}images/{{ organization.logo }}" alt="{{ organization.name }}" width="100px">
+                        {% endif %}
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{ organization.name }}</h4>
+                        <br>
+                    <p>
+                        {% if organization.site %}<b>Сайт</b> - <a  href="{{ organization.site }}" title="{{ organization.name }}">{{ organization.site }}</a><br>{% endif %}
+                        {% if organization.desc %}<br>{{ organization.desc }}<br>{% endif %}
+                    </p>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock %}

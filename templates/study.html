@@ -11,15 +11,15 @@
             {% for place in studies %}
                 <div class="media">
                     <div class="media-left media-middle">
-                        {% if place.logo %}
-                            <img src="{{ STATIC }}images/{{ place.logo }}" alt="{{ place.name }}" width="100px">
+                        {% if place.educational_organization.logo %}
+                            <img src="{{ STATIC }}images/{{ place.educational_organization.logo }}" alt="{{ place.educational_organization.name }}" width="100px">
                         {% endif %}
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading">{{ place.name }}</h4>
+                        <h4 class="media-heading"><a href="/study/{{ place.educational_organization.id }}/">{{ place.educational_organization.name }}</a></h4>
                         <br>
                     <p>
-                        {% if place.site %}<b>Сайт</b> - <a  href="{{ place.site }}" title="{{ place.name }}">{{ place.site }}</a><br>{% endif %}
+                        {% if place.site %}<b>Сайт</b> - <a  href="{{ place.educational_organization.site }}" title="{{ place.educational_organization.name }}">{{ place.educational_organization.site }}</a><br>{% endif %}
                         <b>Период обучения</b> - {{ place.date_start | date:"d/m/Y" }} - {% if place.date_finish %}{{ place.date_finish | date:"d/m/Y" }} <br>{% else %} н.в.<br>{% endif %}
                         {% if place.degree %}<b>Степень</b> - <i>{{ place.degree }}</i><br>{% endif %}
                         {% if place.faculty %}<b>Факультет</b> - {{ place.faculty }}<br>{% endif %}
